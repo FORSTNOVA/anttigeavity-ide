@@ -1,0 +1,31 @@
+# Node modules & dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime & Local Storage Data
+*.log
+live_quota.json
+antigravity_usage_metrics.json
+scratch/
+tmp/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor settings
+.idea/
+.vscode-test/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Packaging & VSIX outputs
+*.vsix
+out/
+dist/

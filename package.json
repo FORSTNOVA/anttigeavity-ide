@@ -1,0 +1,98 @@
+{
+  "name": "antigravity-usage-dashboard",
+  "displayName": "Antigravity Usage & Quota Dashboard",
+  "description": "实时监控 Antigravity IDE 的 Token 消耗、Tab 补全采纳率、Agent 工具调用与配额看板",
+  "version": "1.0.0",
+  "license": "MIT",
+  "publisher": "antigravity-community",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FORSTNOVA/anttigeavity-ide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FORSTNOVA/anttigeavity-ide/issues"
+  },
+  "homepage": "https://github.com/FORSTNOVA/anttigeavity-ide#readme",
+  "keywords": [
+    "antigravity",
+    "antigravity-ide",
+    "quota",
+    "usage",
+    "token",
+    "dashboard",
+    "gemini",
+    "claude"
+  ],
+  "scripts": {
+    "test": "node test/sanity.test.js"
+  },
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization",
+    "Machine Learning"
+  ],
+  "main": "./extension.js",
+  "icon": "media/icon.png",
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:antigravity.viewUsageDashboard",
+    "onCommand:antigravity.resetUsageData",
+    "onCommand:antigravity.exportUsageData",
+    "onView:antigravity.usageSidebarView"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "antigravity.viewUsageDashboard",
+        "title": "Antigravity: View Usage Dashboard (打开用量看板)",
+        "icon": "$(graph-line)"
+      },
+      {
+        "command": "antigravity.resetUsageData",
+        "title": "Antigravity: Reset Usage Data (重置用量统计)",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "antigravity.exportUsageData",
+        "title": "Antigravity: Export Usage Data (导出用量数据)",
+        "icon": "$(export)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "antigravity-usage-container",
+          "title": "Antigravity 用量看板",
+          "icon": "media/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "antigravity-usage-container": [
+        {
+          "type": "webview",
+          "id": "antigravity.usageSidebarView",
+          "name": "用量概览"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Antigravity Usage Dashboard",
+      "properties": {
+        "antigravity.dailyTokenBudget": {
+          "type": "number",
+          "default": 1000000,
+          "description": "每日 Token 预算预警阈值 (默认 1,000,000)"
+        },
+        "antigravity.showStatusBarItem": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否在底部状态栏常驻显示用量统计"
+        }
+      }
+    }
+  }
+}
